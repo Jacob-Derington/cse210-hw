@@ -28,6 +28,5 @@ class Program
             g = int.Parse(guess);
         }
 
-        Console.WriteLine("You guessed it!\n");
     }
 }
