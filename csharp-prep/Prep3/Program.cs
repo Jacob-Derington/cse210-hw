@@ -9,9 +9,9 @@ class Program
         // int n = int.Parse(num);
 
         Random randomGenerator = new Random();
-        int n = randomGenerator.Next(1, 11);
+        int n = randomGenerator.Next(1, 101);
 
-        Console.Write("What is your guess? ");
+        Console.Write("\nWhat is your guess? ");
         string guess = Console.ReadLine();
         int g = int.Parse(guess);
 
@@ -31,6 +31,6 @@ class Program
             g = int.Parse(guess);
         }
 
-        Console.WriteLine("You guessed it!");
+        Console.WriteLine("You guessed it!\n");
     }
 }
