@@ -2,11 +2,14 @@ class Entry
 {
     public string _date;
     public string _entry;
-    public string _title;
     public string _prompt;
-    // metheds
+
     public void OutputEntry()
     {
-        Console.WriteLine($"[{_date}]");
+        Console.WriteLine($"Date: [{_date}]");
+        Console.WriteLine($"Prompt: {_prompt}");
+        Console.WriteLine($"Entry: {_entry}");
+        Console.WriteLine();
+
     }
 }
