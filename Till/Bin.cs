@@ -15,16 +15,19 @@ class Bin
         _value = v;
         _count = c;
     }
-    public int GetCount()
+    public double TotalBinCash()
     {
-        return _count;
+        return _count * _value;
     }
-    public double GetValue()
+    public void Exchange(int amount)
     {
-        return _value;
-    }
-    public Transact(int delta)
-    {
-        _count = delta;
+        if (_count + amount >= 0)
+        {
+            _count += amount;
+        }
+        else
+        {
+            string error = "";
+        }
     }
 }
