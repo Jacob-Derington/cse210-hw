@@ -27,7 +27,7 @@ class Bin
         }
         else
         {
-            string error = "";
+            string error = "Unable to ";
         }
     }
 }
