@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        string quit = "";
+
+        while (quit != "quit")
+        {
+            Scriptres s1 = new Scriptres(); 
+            quit = Console.ReadLine();
+        }
     }
 }
