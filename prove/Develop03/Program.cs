@@ -5,17 +5,23 @@ class Program
 {
     static void Main(string[] args)
     {
+        Scriptres scripture = new Scriptres();
         string quit = "";
 
         while (quit != "quit")
         {
-            Scriptres s1 = new Scriptres();
-            s1.Display();
-            Console.Write("\n\nPress enter to continue or type 'quit' to finish: ");
+            Console.Clear();
+            scripture.Display();
+
+            Console.Write("\nPress enter to continue or type 'quit' to finish: ");
             quit = Console.ReadLine();
             
+            if (quit != "quit")
+            {
+                scripture.HideRandomWords(3);
+            }
         }
-        
+
         Console.WriteLine();
     }
 }

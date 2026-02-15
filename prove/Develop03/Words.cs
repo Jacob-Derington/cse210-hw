@@ -1,18 +1,43 @@
-// class Words
-// {
-//     private List<string> _word;
-//     private bool _isHidden;
+class Words
+{
+    private string _text;
+    private bool _isHidden;
 
-//     public string ReplaceWord()
-//     {
-//         for (int i = 0; i < 3; i++)
-//         {
-//             if (_isHidden)
-//                 return new string('_', _word.Length);
-//             else
-//                 return _word;
-//         }
-//         // return ;
-//     }
+    public Words(string text)
+    {
+        _text = text;
+        _isHidden = false;
+    }
+
+    public void Hide()
+    {
+        if (!ISNum())
+        {
+            _isHidden = true;
+        }
+        
+    }
+
+    public bool IsHidden()
+    {
+        return _isHidden;
+    }
+
+    public bool ISNum()
+    {
+        return int.TryParse(_text, out _);
+    }
+
+    public string Display()
+    {
+        if (_isHidden)
+        {
+            return new string('_', _text.Length);
+        }
+        else
+        {
+            return _text;
+        }
+    }
    
-// }
+}
