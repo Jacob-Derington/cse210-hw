@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Intrinsics.Arm;
 
 class Program
 {
@@ -8,8 +9,13 @@ class Program
 
         while (quit != "quit")
         {
-            Scriptres s1 = new Scriptres(); 
+            Scriptres s1 = new Scriptres();
+            s1.Display();
+            Console.Write("\n\nPress enter to continue or type 'quit' to finish: ");
             quit = Console.ReadLine();
+            
         }
+        
+        Console.WriteLine();
     }
 }
