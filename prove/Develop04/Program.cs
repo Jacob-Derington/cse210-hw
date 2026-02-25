@@ -4,41 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
         Console.WriteLine("\nHello Develop04 World!");
 
-        List<string> animationStrings = new List<string>();
-        animationStrings.Add("|");
-        animationStrings.Add("/");
-        animationStrings.Add("-");
-        animationStrings.Add("\\");
-        animationStrings.Add("|");
-        animationStrings.Add("/");
-        animationStrings.Add("-");
-        animationStrings.Add("\\");
-
-        Console.Write("\nHow long do you want to go for? ");
-        string seconds = Console.ReadLine();
-        int t = int.Parse(seconds);
-
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(t);
-
-        int i = 0;
-
-        while (DateTime.Now < endTime)
+        string c = "";
+        while (c != "4")
         {
-            string s = animationStrings[i];
-            Console.Write(s);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Clear();
+            Console.WriteLine("\nMenu Options:");
+            Console.WriteLine("\t1. Start breathing activity");
+            Console.WriteLine("\t2. Start reflecting activity");
+            Console.WriteLine("\t3. Start listing activity");
+            Console.WriteLine("\t4. Quit");
+            Console.Write("Select a choice form the menu: ");
+            c = Console.ReadLine();
 
-            i++;
-
-            if (i >= animationStrings.Count)
-            {
-                i = 0;
-            }
         }
+
+        // Activity activity = new Activity();
 
         Console.WriteLine("\nDone.\n");
     }   
