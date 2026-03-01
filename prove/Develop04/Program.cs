@@ -11,13 +11,29 @@ class Program
         while (c != "4")
         {
             Console.Clear();
-            Console.WriteLine("\nMenu Options:");
+            Console.WriteLine("Menu Options:");
             Console.WriteLine("\t1. Start breathing activity");
             Console.WriteLine("\t2. Start reflecting activity");
             Console.WriteLine("\t3. Start listing activity");
             Console.WriteLine("\t4. Quit");
             Console.Write("Select a choice form the menu: ");
             c = Console.ReadLine();
+
+            if (c == "1")
+            {
+                Breathing breathing = new Breathing();
+                breathing.Run();
+            }
+            else if (c == "2")
+            {
+                Reflection reflection = new Reflection();
+                reflection.Run();
+            }
+            else if (c == "3")
+            {
+                Listing listing = new Listing();
+                listing.Run();
+            }
 
         }
 
