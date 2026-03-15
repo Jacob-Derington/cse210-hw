@@ -10,19 +10,27 @@ class Program
 
         List<Goals> goals = new List<Goals>();
         int score = 0;
+        int level = 0;
 
         bool running = true;
 
         while (running)
         {
             Console.WriteLine("\n--- Eternal Goal Menu ---");
+            Console.WriteLine($"Score: {score} | Level: {level}");
             Console.WriteLine("1. Create a goal");
             Console.WriteLine("2. Record an event");
             Console.WriteLine("3. Display goals");
             Console.WriteLine("4. Show score");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Save goals");
+            Console.WriteLine("6. Load goals");
+            Console.WriteLine("7. Exit");
             Console.Write("Choose an option: ");
             string choice = Console.ReadLine();
+            Console.Clear();
+
+            Record record = new Record();
+            Load load = new Load();
 
             switch (choice)
             {
@@ -33,7 +41,7 @@ class Program
                 case "2":
                     if (goals.Count == 0)
                     {
-                        Console.WriteLine("No goals available.");
+                        Console.WriteLine("\nNo goals available.");
                         break;
                     }
                     Console.WriteLine("\nSelect a goal to record:");
@@ -47,7 +55,18 @@ class Program
                     {
                         int earned = goals[selected].RecordEvent();
                         score += earned;
-                        Console.WriteLine($"You earned {earned} points! Total score: {score}");
+
+                        int newLevel = score / 100;
+
+                        if (newLevel > level)
+                        {
+                            level = newLevel;
+                            Console.WriteLine($"\n🎉 LEVEL UP! You are now Level {level}! 🎉");
+                        }
+
+                        Console.WriteLine($"You earned {earned} points!");
+                        Console.WriteLine($"Total Score: {score}");
+                        Console.WriteLine($"Current Level: {level}");
                     }
                     else
                     {
@@ -63,9 +82,21 @@ class Program
 
                 case "4":
                     Console.WriteLine($"Your current score: {score}");
+                    Console.WriteLine($"Your current level: {level}");
                     break;
 
                 case "5":
+                    record.SaveGoals(goals);
+                    break;
+
+                case "6":
+                    load.LoadGoals(goals);
+                    score = CalculateScore(goals);
+                    level = score / 100; 
+                    Console.WriteLine($"Goals loaded. Score: {score}, Level: {level}");
+                    break;
+
+                case "7":
                     running = false;
                     break;
 
@@ -75,7 +106,7 @@ class Program
             }
         }
 
-        Console.WriteLine("\nThanks for playing Eternal Quest!");
+        Console.WriteLine("\nThanks for makeing new goals!\n");
     }
 
     static void CreateGoal(List<Goals> goals)
@@ -88,22 +119,15 @@ class Program
         string type = Console.ReadLine();
         Console.Clear();
 
-        string goal = "";
+        string goal = type switch
+        {
+            "1" => "Simple",
+            "2" => "Eternal",
+            "3" => "Checklist",
+            _ => "unknown"
+        };
 
-        if (type == "1")
-        {
-            goal = "simple";
-        }
-        else if (type == "2")
-        {
-            goal = "eternal";
-        }
-        else if (type == "3")
-        {
-            goal = "checklist";
-        }
-
-        Console.Write($"Enter {goal} goal name: ");
+        Console.Write($"\nEnter {goal} goal name: ");
         string name = Console.ReadLine();
         Console.Write("Enter description: ");
         string description = Console.ReadLine();
@@ -134,5 +158,27 @@ class Program
 
         Console.WriteLine("Goal created successfully!");
         Console.Clear();
+    }
+    static int CalculateScore(List<Goals> goals)
+    {
+        int total = 0;
+        foreach (var goal in goals)
+        {
+            if (goal is Simple simple)
+            {
+                if (simple.IsComplete())
+                    total += simple.PointValue;
+            }
+            else if (goal is Eternal eternal)
+            {
+                // Eternal goals can be recorded multiple times, but we don’t store count in this version
+                // If you track how many times it was recorded, add here
+            }
+            else if (goal is Checklist checklist)
+            {
+                total += checklist.PointsEarnedSoFar();
+            }
+        }
+        return total;
     }
 }

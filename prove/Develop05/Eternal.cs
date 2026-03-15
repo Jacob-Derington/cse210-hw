@@ -6,8 +6,10 @@ public class Eternal : Goals
     }
 
     public override int RecordEvent() => _pointValue;
-
     public override bool IsComplete() => false;
-
     public override string GetStatus() => "[∞]";
+    public override string GetStringRepresentation()
+    {
+        return $"EternalGoal|{_name}|{_description}|{_pointValue}";
+    }
 }

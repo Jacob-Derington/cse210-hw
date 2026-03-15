@@ -1,18 +1,25 @@
 public class Record
 {
-    public void CreateTxt(List<Goals> goals)
+    public void SaveGoals(List<Goals> goals)
     {
         Console.Write("\nWhat is the file name (put '.txt' at the end)? ");
         string fileName = Console.ReadLine();
 
-        using (StreamWriter writer = new StreamWriter(fileName))
+        try
         {
-            foreach (Goals goal in goals)
+            using (StreamWriter writer = new StreamWriter(fileName))
             {
-                writer.WriteLine($"{goal.GetType().Name}|{goal.Name}|{goal.PointValue}|{goal.Description}");
+                foreach (Goals goal in goals)
+                {
+                    writer.WriteLine(goal.GetStringRepresentation());
+                }
             }
-        }
 
-        Console.WriteLine($"Goals successfully added to {fileName}.\n");
+            Console.WriteLine($"\nGoals successfully saved to {fileName}.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nError saving file: {ex.Message}\n");
+        }
     }
 }

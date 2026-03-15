@@ -11,6 +11,10 @@ public class Checklist : Goals
         _timesCompleted = 0;
     }
 
+    public int Target => _target;
+    public int Bonus => _bonus;
+    public int Completed => _timesCompleted;
+
     public override int RecordEvent()
     {
         if (_timesCompleted < _target)
@@ -28,4 +32,15 @@ public class Checklist : Goals
     public override bool IsComplete() => _timesCompleted >= _target;
 
     public override string GetStatus() => $"[{_timesCompleted}/{_target}]";
+    public override string GetStringRepresentation()
+    {
+        return $"ChecklistGoal|{_name}|{_description}|{_pointValue}|{_target}|{_bonus}|{_timesCompleted}";
+    }
+    public int PointsEarnedSoFar()
+    {
+        int points = _timesCompleted * _pointValue;
+        if (_timesCompleted >= _target)
+            points += _bonus; // Add bonus if completed
+        return points;
+    }
 }
