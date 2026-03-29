@@ -31,16 +31,16 @@ class Order
 
     public string GetPackingLabel()
     {
-        List<string> shopping = new List<string>();
+        string shopping = "";
         foreach (Product p in _products)
         {
-            Console.WriteLine($"{p.GetName()} {p.GetId()}");
+            shopping += $"{p.GetName()} {p.GetId()}\n";
         }
         return shopping;
     }
 
     public string GetShippingLabel()
     {
-        
+        return $"{_customer.GetName()}\n{_customer.GetAddress().GetFullAddress()}";
     }
 }

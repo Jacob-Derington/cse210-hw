@@ -18,4 +18,9 @@ class Customer
     {
         return _name;
     }
+
+    public Address GetAddress()
+    {
+        return _address;
+    }
 }
