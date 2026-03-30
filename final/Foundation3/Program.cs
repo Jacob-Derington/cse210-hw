@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation3 World!");
+        Console.Clear();
+        Console.WriteLine("\nHello Foundation3 World!\n");
     }
 }

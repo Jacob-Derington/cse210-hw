@@ -22,9 +22,18 @@ class Program
         video2.AddComment(c4);
         video2.AddComment(c5);
 
+        Video video3 = new Video("Python", "CodeBullet", 3000);
+        Comment c6 = new Comment("Pain", "Fight, Fight, Fight!");
+        Comment c7 = new Comment("user123", "Suffering");
+        Comment c8 = new Comment("Flash", "First Comment!");
+        video3.AddComment(c6);
+        video3.AddComment(c7);
+        video3.AddComment(c8);
+
         List<Video> videos = new List<Video>();
         videos.Add(video1);
         videos.Add(video2);
+        videos.Add(video3);
 
         foreach (Video v in videos)
         {
