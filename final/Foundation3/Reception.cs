@@ -12,8 +12,13 @@ class Reception : Event
         return $"{GetShortDescription()}\nRSVP Email: {_email}";
     }
 
+    public override string GetFull()
+    {
+        return $"{GetStandard()}\nType: Reception\nRSVP Email: {_email}";
+    }
+
     public string GetShortDescription()
     {
-        return $"Reception: {_title} ({_date} {_time})";
+        return $"Reception: {_title} ({_date})";
     }
 }

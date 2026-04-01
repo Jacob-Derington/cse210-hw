@@ -6,4 +6,14 @@ class Outdoor : Event
     {
         _weather = weather;
     }
+
+    public override string GetFull()
+    {
+        return $"{GetStandard()}\nType: Outdoor\nExpected weather: {_weather}";
+    }
+
+    public string GetShortDescription()
+    {
+        return $"Outdoor: {_title} ({_date})";
+    }
 }

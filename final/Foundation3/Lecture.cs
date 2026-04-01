@@ -8,4 +8,14 @@ class Lecture : Event
         _speaker = speaker;
         _capacity = capacity;
     }
+
+    public override string GetFull()
+    {
+        return $"{GetStandard()}\nType: Lecture\nSpeaker: {_speaker}\nCapacity: {_capacity}";
+    }
+
+    public string GetShortDescription()
+    {
+        return $"Lecture: {_title} ({_date})";
+    }
 }

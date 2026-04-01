@@ -17,11 +17,11 @@ class Event
 
     public string GetStandard()
     {
-        
+        return $"{_title}\n{_description}\n{_date} at {_time}\n{_address.GetFullAddress()}";
     }
 
-    public string GetFull()
+    public virtual string GetFull()
     {
-        
+        return GetStandard();
     }
 }
