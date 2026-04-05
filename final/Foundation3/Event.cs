@@ -24,4 +24,9 @@ class Event
     {
         return GetStandard();
     }
+
+    public virtual string GetShortDescription()
+    {
+        return $"{_title} ({_date})";
+    }
 }

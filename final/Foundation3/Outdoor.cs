@@ -12,8 +12,8 @@ class Outdoor : Event
         return $"{GetStandard()}\nType: Outdoor\nExpected weather: {_weather}";
     }
 
-    public string GetShortDescription()
+    public override string GetShortDescription()
     {
-        return $"Outdoor: {_title} ({_date})";
+        return $"Outdoor Event: {_title} ({_date}), Weather: {_weather}";
     }
 }

@@ -14,8 +14,8 @@ class Lecture : Event
         return $"{GetStandard()}\nType: Lecture\nSpeaker: {_speaker}\nCapacity: {_capacity}";
     }
 
-    public string GetShortDescription()
+    public override string GetShortDescription()
     {
-        return $"Lecture: {_title} ({_date})";
+        return $"Lecture: {_title} by {_speaker} ({_date})";
     }
 }
